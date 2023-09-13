@@ -6,8 +6,21 @@ $('.leads').text(today.format('MMM D, YYYY---hh:mm A'));
 
 
 $(function () {
+    let hour= today.hour()
+    console.log($('.time-block'))
+    $('.time-block').each(function(_,el){
+    if($(el).attr('id').slice(5) > hour){
+        $(el).addClass('future')
+    }
+    if($(el).attr('id').slice(5) == hour){
+        $(el).addClass('present')
+    }
+    if($(el).attr('id').slice(5) < hour){
+        $(el).addClass('past')
+    }
+})
 
-
+    
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
     // local storage. HINT: What does `this` reference in the click listener
